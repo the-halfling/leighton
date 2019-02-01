@@ -1,12 +1,13 @@
 {
   "name": "leighton",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "dependencies": {
     "jquery": "3.2.1",
     "jquery-smooth-scroll": "2.2.0",
     "lazysizes": "4.0.1",
     "normalize.css": "7.0.0",
     "picturefill": "3.0.2",
+    "request": "^2.88.0",
     "waypoints": "4.0.1"
   },
   "devDependencies": {
@@ -16,7 +17,7 @@
     "babel-preset-es2015": "6.24.1",
     "browser-sync": "2.18.13",
     "del": "3.0.0",
-    "gulp": "3.9.1",
+    "gulp": "^3.9.1",
     "gulp-cssnano": "2.1.2",
     "gulp-imagemin": "4.0.0",
     "gulp-modernizr": "1.0.0-alpha",
