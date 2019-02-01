@@ -10,8 +10,11 @@
 
 </head>
 <body>
-  <header>
-    <div class="header__nav">
+
+<header>
+  <div class="header-nav">
+    <div class="header-nav--menu-icon"><img src="../app/assets/images/menu.svg" alt="menu" width="10%"></div>
+    <div class="header-nav--menu-block">
       <ul>
         <li><a href="https://www.leighton.com/work/">Work</a></li>
         <li><a href="https://www.leighton.com/services/">Services</a></li>
@@ -21,18 +24,82 @@
         <li><a href="#"><strong>Shop</strong></a></li>
         <li><a href="https://www.leighton.com/get-in-touch/">Contact</a></li>
       </ul>
-    </nav>
-  </header>
+    </div>
+  </div>
+</header>
 
-  <div class="featured_product"></div>
-  <div class="products"></div>
+<div class="featured"></div>
+<div class="products"></div>
 
-  <footer>
-    <p>&copy; 2019 the leighton shop</p>
-  </footer>
+<script id="template" type="text/template">
+    <div class="product">
+        <div class="product--header">{{ type }} Product</div>
+        <div class="product--image"><img src="../app/assets/images/our-start-i.jpg" alt="no image"> </div>    
+        <div class="product--title">{{ name }}</div>
+        <div class="product--brand">Brand: {{ brand }}</div>
+        <select>
+            <option value="" disabled selected>Select Size</option>
+            {{ options }}
+        </select>
+        <div class="product--description">Description:<br> {{ description }}</div>
+        <div class="product--code">Product ID: {{ productid }}</div>
+        <button class="btn--buy">Add to basket</button>
+        <button class="btn--save">Save for later</button>
+    </div>
+</script>
+
+<script>(() => { 
+
+const apiUrl = 'https://27gmrimn45.execute-api.eu-west-2.amazonaws.com/demos/leighton-demo-api?TableName=products';
+const featured = document.querySelector('.featured');
+const products = document.querySelector('.products');
+const template = document.getElementById('template').innerHTML;
+const featuredID = '0m8hjmd721';
+const headers = new Headers({
+  'x-api-key': 'zQo4PPqD862IwDIQRZub8gX4dqjA3aW2DDhI6UF4',
+});
+
+const addItem = (item) => {
+
+  const isFeatured = item.productid === featuredID;
+  
+  let html = template.replace('{{ name }}', item.name);
+  html = html.replace('{{ brand }}', item.brand);
+  html = html.replace('{{ description }}', item.description);
+  html = html.replace('{{ productid }}', item.productid);
+
+  let options = [];
+  ['small', 'medium', 'large'].forEach((size) => {
+    if (item.size[size] > 0) {
+        options.push(`<option value="${size}">${size} - ${item.size[size]} In Stock</option>`);
+    }
+  });
+
+  html = html.replace('{{ options }}', options.join(''));
+  if (isFeatured) {
+    html = html.replace('{{ type }}', 'Featured');
+    return featured.innerHTML += html;
+  }
+
+  html = html.replace('{{ type }}', '');
+  return products.innerHTML += html;
+
+};
+
+fetch(apiUrl, { headers }) 
+.then(r => r.json()) 
+.then(data => data.Items.forEach(addItem)) 
+.catch(error => console.log(error)) 
+
+})(); 
+</script>
 
 
+<footer>
+  <div class="footer">
+    <p class="footer--copyright">&copy; 2019 the leighton shop</p>
+  </div>
+</footer>
 
-<script src="../app/assets/js/script.js"></script>
 </body>
 </html>

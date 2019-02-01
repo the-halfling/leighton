@@ -1,16 +1,14 @@
-.header__nav {
+.header-nav {	
 	background: $leightonGrey;
 	width: 100%;
-	display: block;
 	text-align: center;
 	
-	ul {
-		margin: 0;
+	@mixin atSmall {
+		background: #fff;
 	}
 
-	a {
-		text-decoration:none;
-		color: $leightonLightText;
+	ul {
+		margin: 0;
 	}
 
 	li {
@@ -18,17 +16,45 @@
 		display: inline-block;
 		padding: 0 1rem 0 0.5rem;
 		line-height: 2.5rem;
-		text-transform: lowercase;		
+		text-transform: lowercase;
+		font-weight: 100;		
 
 			&:after {
-				content:' . ';
 				color: $leightonLightText;
-				padding-left: 1rem;
+
+				@mixin atMediumUp {
+					content:' . ';
+					padding-left: 1rem;
+				}
 			}
 
 			&:last-child:after {
-				content:'';
+				@mixin atMediumUp {
+					content:'';
+				}
 			}
+	}
+
+	a {
+		text-decoration:none;
+		color: $leightonLightText;
+	}
+
+	&--menu-block {
+		@mixin atSmall {
+			display: none;
+		}
+	}
+
+	&--menu-icon {
+		@mixin atMediumUp {
+			display: none;
+		}
+
+		@mixin atSmall {
+			text-align: right;
+    		padding: 1rem;
+		}
 	}
 
 }
