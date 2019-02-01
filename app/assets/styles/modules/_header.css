@@ -1,1 +1,34 @@
- 
+.header__nav {
+	background: $leightonGrey;
+	width: 100%;
+	display: block;
+	text-align: center;
+	
+	ul {
+		margin: 0;
+	}
+
+	a {
+		text-decoration:none;
+		color: $leightonLightText;
+	}
+
+	li {
+		list-style-type: none;
+		display: inline-block;
+		padding: 0 1rem 0 0.5rem;
+		line-height: 2.5rem;
+		text-transform: lowercase;		
+
+			&:after {
+				content:' . ';
+				color: $leightonLightText;
+				padding-left: 1rem;
+			}
+
+			&:last-child:after {
+				content:'';
+			}
+	}
+
+}

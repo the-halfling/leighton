@@ -453,3 +453,38 @@ template {
 body {
 	font-family: sans-serif;
 }
+
+.header__nav {
+	background: #4c4b4b;
+	width: 100%;
+	display: block;
+	text-align: center;
+
+}
+
+.header__nav ul {
+		margin: 0;
+	}
+
+.header__nav a {
+		text-decoration:none;
+		color: #fff;
+	}
+
+.header__nav li {
+		list-style-type: none;
+		display: inline-block;
+		padding: 0 1rem 0 0.5rem;
+		line-height: 2.5rem;
+		text-transform: lowercase;
+	}
+
+.header__nav li:after {
+				content:' . ';
+				color: #fff;
+				padding-left: 1rem;
+			}
+
+.header__nav li:last-child:after {
+				content:'';
+			}

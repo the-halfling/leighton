@@ -28,15 +28,15 @@ xhr.onreadystatechange = function(){
 			// create a product listing
 			const featuredProduct = document.createRange().createContextualFragment(`
 
-				<div class="feature_products--items">
+				<div class="featured_product__items">
 
-				<div class="feature_products--header">Featured Product </div>
+				<div class="featured_product__header">Featured Product </div>
 
-					<div class="feature_products--items-image"><img src="../app/assets/images/our-start-i.jpg" alt="no image"> </div>
+					<div class="featured_product__items--image"><img src="../app/assets/images/no-image.jpg" alt="no image"> </div>
 				
-					<div class="feature_products--items-title">${item.name}</div>
+					<div class="featured_product__items--title">${item.name}</div>
 				
-					<div class="feature_products--items-brand">Brand: ${item.brand} </div>
+					<div class="featured_product__items--brand">Brand: ${item.brand} </div>
 				
 					<select>
 						<option value="" disabled selected>Select Size</option>
@@ -46,12 +46,12 @@ xhr.onreadystatechange = function(){
 						}).join('')}
 					</select>
 
-					<div class="feature_products--items-description">Description:<br> ${item.description} </div>
+					<div class="featured_product__items--description">Description:<br> ${item.description} </div>
 
-					<div class="feature_products--items-product_code">Product ID: ${item.productid} </div>
+					<div class="featured_product__items--product_code">Product ID: ${item.productid} </div>
 
-					<button class="feature_products--items-buy">Add to basket</button>
-					<button class="feature_products--items-save">Save for later</button>
+					<button class="btn btn--red">Add to basket</button>
+					<button class="btn btn--white">Save for later</button>
 
 				</div>
 			`);
@@ -64,13 +64,13 @@ xhr.onreadystatechange = function(){
 				// create a product listing
 				const product = document.createRange().createContextualFragment(`
 
-					<div class="products--items">
+					<div class="products__items">
 
-						<div class="products--items-image"><img src="../app/assets/images/our-start-i.jpg" alt="no image"> </div>
+						<div class="products__items--image"><img src="../app/assets/images/our-start-i.jpg" alt="no image"> </div>
 					
-						<div class="products--items-title">${item.name}</div>
+						<div class="products__items--title">${item.name}</div>
 					
-						<div class="products--items-brand">Brand: ${item.brand} </div>
+						<div class="products__items--brand">Brand: ${item.brand} </div>
 					
 						<select>
 							<option value="" disabled selected>Select Size</option>
@@ -80,12 +80,12 @@ xhr.onreadystatechange = function(){
 							}).join('')}
 						</select>
 
-						<div class="products--items-description">Description:<br> ${item.description} </div>
+						<div class="products__items--description">Description:<br> ${item.description} </div>
 
-						<div class="products--items-product_code">Product ID: ${item.productid} </div>
+						<div class="products__items--product_code">Product ID: ${item.productid} </div>
 
-						<button class="products--items-buy">Add to basket</button>
-						<button class="products--items-save">Save for later</button>
+						<button class="btn btn--red">Add to basket</button>
+						<button class="btn btn--white">Save for later</button>
 
 					</div>
 				`);
