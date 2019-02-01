@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="utf-8"/>
   <title>Leighton Shop</title>
-
   <link rel="stylesheet" href="temp/styles/styles.css">
 
 </head>
@@ -13,7 +12,7 @@
 
 <header>
   <div class="header-nav">
-    <div class="header-nav--menu-icon"><img src="../app/assets/images/menu.svg" alt="menu" width="10%"></div>
+    <a class="header-nav--menu-icon" href="#"><img src="../app/assets/images/menu.svg" alt="menu" width="10%"></a>
     <div class="header-nav--menu-block">
       <ul>
         <li><a href="https://www.leighton.com/work/">Work</a></li>
@@ -34,7 +33,7 @@
 <script id="template" type="text/template">
     <div class="product">
         <div class="product--header">{{ type }} Product</div>
-        <div class="product--image"><img src="../app/assets/images/our-start-i.jpg" alt="no image"> </div>    
+        <div class="product--image"><img src="../app/assets/images/no-image.jpg" alt="no image"> </div>    
         <div class="product--title">{{ name }}</div>
         <div class="product--brand">Brand: {{ brand }}</div>
         <select>
@@ -49,25 +48,29 @@
 </script>
 
 <script>(() => { 
-
+//set API details
 const apiUrl = 'https://27gmrimn45.execute-api.eu-west-2.amazonaws.com/demos/leighton-demo-api?TableName=products';
+const headers = new Headers({
+  'x-api-key': 'zQo4PPqD862IwDIQRZub8gX4dqjA3aW2DDhI6UF4',
+});
+
 const featured = document.querySelector('.featured');
 const products = document.querySelector('.products');
 const template = document.getElementById('template').innerHTML;
 const featuredID = '0m8hjmd721';
-const headers = new Headers({
-  'x-api-key': 'zQo4PPqD862IwDIQRZub8gX4dqjA3aW2DDhI6UF4',
-});
+
 
 const addItem = (item) => {
 
   const isFeatured = item.productid === featuredID;
   
+  //replace the placeholders tempalte
   let html = template.replace('{{ name }}', item.name);
   html = html.replace('{{ brand }}', item.brand);
   html = html.replace('{{ description }}', item.description);
   html = html.replace('{{ productid }}', item.productid);
 
+//loop through all available sizes and create an array
   let options = [];
   ['small', 'medium', 'large'].forEach((size) => {
     if (item.size[size] > 0) {
@@ -92,12 +95,24 @@ fetch(apiUrl, { headers })
 .catch(error => console.log(error)) 
 
 })(); 
+
+// Script to hide/show menu
+var button = document.querySelector('.header-nav--menu-icon');
+var menu = document.querySelector('.header-nav--menu-block');
+button.addEventListener('click', function (event) {
+      if (menu.style.display == "block") {
+          menu.style.display = "none";
+      } else {
+          menu.style.display = "block";
+      }
+    }
+  );
 </script>
 
 
 <footer>
   <div class="footer">
-    <p class="footer--copyright">&copy; 2019 the leighton shop</p>
+    <div class="footer--copyright">&copy; 2019 the leighton shop</div>
   </div>
 </footer>
 

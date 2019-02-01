@@ -13,11 +13,18 @@
 
 	li {
 		list-style-type: none;
-		display: inline-block;
 		padding: 0 1rem 0 0.5rem;
 		line-height: 2.5rem;
 		text-transform: lowercase;
-		font-weight: 100;		
+		font-weight: 100;	
+
+		@mixin atSmall{
+			display: block;
+		}	
+
+		@mixin atMediumUp {
+			display: inline-block;
+		}
 
 			&:after {
 				color: $leightonLightText;
@@ -37,7 +44,15 @@
 
 	a {
 		text-decoration:none;
-		color: $leightonLightText;
+
+		@mixin atSmall {
+			color: $leightonDarkText;
+		}
+
+		@mixin atMediumUp{
+			color: $leightonLightText;
+		}
+
 	}
 
 	&--menu-block {

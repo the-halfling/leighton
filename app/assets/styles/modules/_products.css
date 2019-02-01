@@ -1,1 +1,20 @@
- 
+.product {
+	max-width: 1440px;
+	margin: 0 auto;
+	border: 1px solid $leightonLightGrey;
+	margin-bottom: 1rem;
+} 
+
+.products {
+	.product--header{
+		display: none;
+	}
+}
+
+.featured {
+	.product--header {
+		background: $leightonGrey;
+		color: $leightonLightText;
+		padding: 0.5rem 1rem;
+	}
+}
