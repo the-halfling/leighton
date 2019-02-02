@@ -1,8 +1,31 @@
 .product {
-	max-width: 1440px;
+	max-width: 1200px;
 	margin: 0 auto;
-	border: 1px solid $leightonLightGrey;
 	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border: 1px solid $leightonLightGrey;
+
+		@mixin atSmall {
+			margin: 1rem;
+		}
+
+	.row {
+		
+	}
+
+	&--image {
+		width: 33%;
+	}
+
+	&--information {
+		width: 66%;
+	}
+
+	&--header {
+		width: 100%;
+	}
 } 
 
 .products {

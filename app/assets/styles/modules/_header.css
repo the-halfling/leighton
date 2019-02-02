@@ -44,32 +44,39 @@
 
 	a {
 		text-decoration:none;
-
-		@mixin atSmall {
-			color: $leightonDarkText;
-		}
-
-		@mixin atMediumUp{
-			color: $leightonLightText;
-		}
-
+		color: $leightonLightText;
 	}
 
 	&--menu-block {
 		@mixin atSmall {
 			display: none;
+			background: $leightonRed;
+			color: $leightonLightText;
 		}
 	}
 
-	&--menu-icon {
+	&--mobile {
+		width: 100%;
+		position: relative;
+
+			@mixin atMediumUp {
+				display: none;
+			}
+
+			@mixin atSmall {
+	    		padding: 1rem;
+			}
+	}
+
+	&--mobile-logo {
 		@mixin atMediumUp {
 			display: none;
 		}
 
 		@mixin atSmall {
-			text-align: right;
-    		padding: 1rem;
+			margin:0 auto;
 		}
 	}
+
 
 }
