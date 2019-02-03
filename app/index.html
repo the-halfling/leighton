@@ -154,13 +154,16 @@
         <div class="product--wishlist"></div>
         <!--This is just a place holder we would house the prices here if they were on the API -->
         <div class="product--price">£55</div>
-        <div class="product--brand">Brand: {{ brand }}</div>
-        <select>
-            <option value="" disabled selected>Select Size</option>
-            {{ options }}
-        </select>
-        <div class="product--description">Description:<br> {{ description }}</div>
-        <div class="product--code">Product ID: {{ productid }}</div>
+        <div class="product--brand"><strong>Brand:</strong> {{ brand }}</div>
+        <div class="product--colour"><strong>Colour:</strong> {{ colour }}</div>
+        <div class="product--sizes">
+          <select>
+              <option value="" disabled selected>Select Size </option>
+              {{ options }}
+          </select>
+        </div>
+        <div class="product--description"><strong>Description:</strong><br><div class="product--description__content"> {{ description }} </div></div>
+        <div class="product--code"><strong>Product ID:</strong> {{ productid }}</div>
         <button class="btn--buy">Add to basket</button>
         <button class="btn--save">Save for later</button>     
       </div>
@@ -200,6 +203,7 @@ const addItem = (item) => {
   
   //replace the placeholders tempalte
   let html = template.replace('{{ name }}', item.name);
+  html = html.replace('{{ colour }}', item.colour);
   html = html.replace('{{ brand }}', item.brand);
   html = html.replace('{{ description }}', item.description);
   html = html.replace('{{ productid }}', item.productid);

@@ -743,29 +743,73 @@ a {
 @media (min-width:768px){
 
 .product--information {
-			width: 60%;
-			text-align: left
+			width: 55%;
+			text-align: left;
+			margin-top: 1rem;
+			position: relative
 	} 
 	}
 
 .product--title {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: 700;
 		text-transform: capitalize;
 		color: #000;
 	}
 
-@media (min-width:768px){ 
+@media (min-width:768px){
+
+.product--title {
+			margin-bottom: 1rem
+	} 
+	}
+
+.product--sizes select {
+			border: 1px solid #b8b8b8;
+			-webkit-appearance: none;
+			   -moz-appearance: none;
+			        appearance: none;
+			padding: 0.833rem;
+			border-radius: 0;
+			background: #fff;
+			margin: 1.25rem 0;
+			background: url(../../assets/images/caret-down.png) 95% 50% no-repeat;
+			text-transform: capitalize;
+		}
+
+.product--code {
+		line-height: 3rem;
+	}
+
+.product--colour, 
+	.product--brand, 
+	.product--price {
+		line-height: 2.5rem;
+		text-transform: capitalize;
 	}
 
 .product--price {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
+		font-weight: 700;
 		color: #000;
+	}
+
+@media (min-width:768px){
+
+.product--price {
+		   	position: absolute;
+    		right: 0;
+    		top: 0
+	} 
 	}
 
 .product--header {
 		width: 100%;
 	}
+
+.product--description__content {
+			margin: 1rem 0;
+		}
 
 .products .product--header{
 		display: none;
@@ -775,6 +819,29 @@ a {
 		background: #545454;
 		color: #fff;
 		padding: 0.5rem 1rem;
+	}
+
+.btn--buy {
+		line-height: 2.25rem;
+		padding: 0 2rem;
+		border: 1px solid #c22b20;
+		background: #c22b20;
+		color: #fff;
+	}
+
+.btn--save {
+		line-height: 2.25rem;
+		padding: 0 2rem;
+		border: 1px solid #b8b8b8;
+		color: #b8b8b8;
+		background: #fff;
+	}
+
+@media (min-width:768px){
+
+.btn--save {
+			margin-left: 2rem
+	} 
 	}
 
 .footer {

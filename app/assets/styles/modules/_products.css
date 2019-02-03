@@ -10,9 +10,8 @@
 	flex-wrap: wrap;
 
 		@mixin atMedium{
-			border: 1px solid $leightonLightGrey;	
+			border: 1px solid $leightonLightGrey;
 		}
-	
 
 		@mixin atSmall {
 			margin: 1rem 0;
@@ -38,28 +37,70 @@
 		padding: 1rem 0.5rem;
 
 		@mixin atMedium {
-			width: 60%;
+			width: 55%;
 			text-align: left;
+			margin-top: 1rem;
+			position: relative;
 		}
 	}
 
 	&--title {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: 700;
 		text-transform: capitalize;
 		color: $leightonBlack;
-		@mixin atMedium {
 
+		@mixin atMedium {
+			margin-bottom: 1rem;
 		}
 	}
 
+	&--sizes {
+
+		& select {
+			border: 1px solid $leightonLightGrey;
+			appearance: none;
+			padding: 0.833rem;
+			border-radius: 0;
+			background: #fff;
+			margin: 1.25rem 0;
+			background: url(../../assets/images/caret-down.png) 95% 50% no-repeat;
+			text-transform: capitalize;
+		}
+	}
+
+	&--code {
+		line-height: 3rem;
+	}
+
+	&--colour, 
+	&--brand, 
 	&--price {
-		font-size: 1.5rem;
+		line-height: 2.5rem;
+		text-transform: capitalize;
+	}
+
+
+	&--price {
+		font-size: 1.2rem;
+		font-weight: 700;
 		color: $leightonBlack;
+
+		@mixin atMedium {
+		   	position: absolute;
+    		right: 0;
+    		top: 0;
+		}
 	}
 
 	&--header {
 		width: 100%;
+	}
+
+	&--description {
+		&__content {
+			margin: 1rem 0;
+		}
 	}
 } 
 

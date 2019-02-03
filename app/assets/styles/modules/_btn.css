@@ -1,0 +1,24 @@
+.btn {
+
+	&--buy {
+		line-height: 2.25rem;
+		padding: 0 2rem;
+		border: 1px solid $leightonRed;
+		background: $leightonRed;
+		color: $leightonLightText;
+	}
+
+
+	&--save {
+		line-height: 2.25rem;
+		padding: 0 2rem;
+		border: 1px solid $leightonLightGrey;
+		color: $leightonLightGrey;
+		background: #fff;
+
+		@mixin atMedium {
+			margin-left: 2rem;
+		}
+	}
+
+}
