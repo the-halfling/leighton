@@ -35,6 +35,7 @@
 		width: 100%;
 		display: block;
 		text-align: center;
+		padding: 1rem 0.5rem;
 
 		@mixin atMedium {
 			width: 60%;
@@ -42,6 +43,20 @@
 		}
 	}
 
+	&--title {
+		font-size: 2rem;
+		font-weight: 700;
+		text-transform: capitalize;
+		color: $leightonBlack;
+		@mixin atMedium {
+
+		}
+	}
+
+	&--price {
+		font-size: 1.5rem;
+		color: $leightonBlack;
+	}
 
 	&--header {
 		width: 100%;

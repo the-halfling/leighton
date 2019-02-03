@@ -182,6 +182,20 @@ const featuredID = '0m8hjmd721';
 
 const addItem = (item) => {
 
+  let hasStock = false;
+
+  let options = [];
+  ['small', 'medium', 'large'].forEach((size) => {
+    if (item.size[size] > 0) {
+         hasStock = true;
+         options.push(`<option value="${size}">${size} - ${item.size[size]} In Stock</option>`);
+    }
+  });
+
+  if (hasStock == false) {
+    return;
+  };
+
   const isFeatured = item.productid === featuredID;
   
   //replace the placeholders tempalte
@@ -190,13 +204,7 @@ const addItem = (item) => {
   html = html.replace('{{ description }}', item.description);
   html = html.replace('{{ productid }}', item.productid);
 
-//loop through all available sizes and create an array
-  let options = [];
-  ['small', 'medium', 'large'].forEach((size) => {
-    if (item.size[size] > 0) {
-        options.push(`<option value="${size}">${size} - ${item.size[size]} In Stock</option>`);
-    }
-  });
+
 
   html = html.replace('{{ options }}', options.join(''));
   if (isFeatured) {
