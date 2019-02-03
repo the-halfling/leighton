@@ -146,27 +146,51 @@
 	}
 
 
-	&--lower {
+	&--lower .container {
+		display: flex;
+		justify-content: space-around;
 		border-top: 1px solid $leightonLightGrey;
 		border-bottom: 1px solid $leightonLightGrey;
 		width: 100%;
 		text-align: center;
 		padding: 0.875rem 0;
+		margin: 0 auto;
 
-		li {
+		& ul li {
 			list-style-type: none;
+			padding:0 1rem;
+			position: relative;
+			float: left;
+
 		}
 
-		a {
-			display: inline-block;
-			padding:0 1rem;
+		& ul ul {
+			display:none;
+			position:absolute;
+			left: -5%;
+			background: $leightonRed;
+			text-align: left;
+			margin: 0;	
+			padding: 1rem;
+			line-height: 2rem;
+			width: 200px;
+			color:$leightonLightText;
+		}
+
+		& ul ul li {
+			float:none;
+		}
+
+		& ul li:hover > ul {
+			display: block;
+		}
+
+		a {			
 			color: $leightonLightGrey;
 		}
 
 		a:hover {
 			color: $leightonRed;
 		}
-
-
 	}
 }

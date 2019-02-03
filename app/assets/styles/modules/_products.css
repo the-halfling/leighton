@@ -8,19 +8,40 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	border: 1px solid $leightonLightGrey;
+
+		@mixin atMedium{
+			border: 1px solid $leightonLightGrey;	
+		}
+	
 
 		@mixin atSmall {
 			margin: 1rem 0;
 		}
 
 	&--image {
-		width: 33%;
+		width: 100%;
+
+		& img {
+			display: block;
+		}
+
+
+		@mixin atMedium {
+			width: 40%;
+		}
 	}
 
 	&--information {
-		width: 66%;
+		width: 100%;
+		display: block;
+		text-align: center;
+
+		@mixin atMedium {
+			width: 60%;
+			text-align: left;
+		}
 	}
+
 
 	&--header {
 		width: 100%;
