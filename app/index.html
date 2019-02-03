@@ -37,7 +37,7 @@
         <i class="fas fa-caret-down"></i>
       </div>
 
-      <a onclick="toggle_visibility('mobile-nav__block1');" class="mobile-nav__button closed" >
+      <a onclick="toggle_visibility('mobile-nav__block1');" class="mobile-nav__button closed" title="About Leighton" >
         <div class="nav-button">
           About Leighton
         </div>
@@ -45,35 +45,35 @@
 
       <div id="mobile-nav__block1" style="display: none;">  
         <ul>
-          <a href="https://www.leighton.com/work/"><li>Work</li></a>
-          <li><a href="https://www.leighton.com/services/">Services</a></li>
-          <li><a href="https://www.leighton.com/insights/">Insights</a></li>
-          <li><a href="https://www.leighton.com/blog/">Blog</a></li>
-          <li><a href="https://www.leighton.com/events/">Events</a></li>
-          <li><a href="#"><strong>Shop</strong></a></li>
-          <li><a href="https://www.leighton.com/get-in-touch/">Contact</a></li>
+          <a href="https://www.leighton.com/work/" title="Work"><li>Work</li></a>
+          <a href="https://www.leighton.com/services/" title="Services"><li>Services</li></a>
+          <a href="https://www.leighton.com/insights/" title="Insights"><li>Insights</li></a>
+          <a href="https://www.leighton.com/blog/" title="Blog"><li>Blog</li></a>
+          <a href="https://www.leighton.com/events/" title="Events"><li>Events</li></a>
+          <a href="#" title="Shop"><li><strong>Shop</strong></li></a>
+          <a href="https://www.leighton.com/get-in-touch/" title="Contact"><li>Contact</li></a>
         </ul>
       </div>
 
-      <a onclick="toggle_visibility('mobile-nav__block2');" class="mobile-nav__button closed" >
-        <div class="nav-button">
+      <a onclick="toggle_visibility('mobile-nav__block2');" class="mobile-nav__button closed" title="Leighton Shop">
+        <div class="nav-button" aria-label="Leighton Shop">
           Leighton Shop
         </div>
       </a>
 
       <div id="mobile-nav__block2" style="display: none;">  
         <ul>
-          <a href="#"><li>Shop Home</li></a>
+          <a href="#" title="Shop Home"><li>Shop Home</li></a>
           <a onclick="toggle_visibility('mobile-nav__sub-block1');" class="mobile-nav__button closed"><li>Male</li></a>
           <div id="mobile-nav__sub-block1" style="display: none;">
             <ul>
               <li>Test Sub Category</li>
             <ul>
           </div>
-          <a href="#"><li>Female</li></a>
-          <a href="#"><li>Kids</li></a>
-          <a href="#"><li>Sale</li></a>
-          <a href="#"><li>Coming Soon</li></a>
+          <a href="#" title="Female"><li>Female</li></a>
+          <a href="#" title="Kids"><li>Kids</li></a>
+          <a href="#" title="Sale"><li>Sale</li></a>
+          <a href="#" title="Coming Soon"><li>Coming Soon</li></a>
         </ul>
       </div>
       
@@ -84,13 +84,13 @@
   <div class="header-desktop">
     <div class="header-desktop--upper">
       <ul>
-        <a href="https://www.leighton.com/work/"><li>Work</li></a>
-        <a href="https://www.leighton.com/services/"><li>Services</li></a>
-        <a href="https://www.leighton.com/insights/"><li>Insights</li></a>
-        <a href="https://www.leighton.com/blog/"><li>Blog</li></a>
-        <a href="https://www.leighton.com/events/"><li>Events</li></a>
-        <a href="#"><li><strong>Shop</strong></li></a>
-        <a href="https://www.leighton.com/get-in-touch/"><li>Contact</li></a>
+          <a href="https://www.leighton.com/work/" title="Work"><li>Work</li></a>
+          <a href="https://www.leighton.com/services/" title="Services"><li>Services</li></a>
+          <a href="https://www.leighton.com/insights/" title="Insights"><li>Insights</li></a>
+          <a href="https://www.leighton.com/blog/" title="Blog"><li>Blog</li></a>
+          <a href="https://www.leighton.com/events/" title="Events"><li>Events</li></a>
+          <a href="#" title="Shop"><li><strong>Shop</strong></li></a>
+          <a href="https://www.leighton.com/get-in-touch/" title="Contact"><li>Contact</li></a>
       </ul>
 
     </div>
@@ -98,19 +98,19 @@
     <div class="header-desktop--mid">
       <div class="header-desktop--mid__container">
         <div class="header-desktop--mid__country">
-          <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
+          <img src="../app/assets/images/uk_flag.png" alt="UK Flag">
           <i class="fas fa-caret-down"></i>
         </div>
       </div>
 
       <div class="header-desktop--mid__logo">
-        <img src="../app/assets/images/logo.png" alt="the leighton shop">
+        <img src="../app/assets/images/logo.png" alt="The Leighton Shop">
       </div>
 
       <div class="header-desktop--mid__container">
         <div class="header-desktop--mid__basket">
           <span>
-            <i class="fas fa-shopping-cart"></i> Your Basket (<span class="red">x</span>)
+            <i class="fas fa-shopping-cart"></i><span class="header-desktop--mid__basket__text"> Your Basket (<span class="red">x</span>)</span>
           </span>
         </div>
       </div>
@@ -119,20 +119,20 @@
     <div class="header-desktop--lower">
       <div class="container">
           <ul>
-          <li><a href="#">Shop Home</a></li>
+          <li><a href="#" title="Shop Home">Shop Home</a></li>
 
           <li>
-            <a href="#" class="dropdown">Male <i class="fas fa-caret-down"></i></a>
+            <a href="#" class="dropdown" title="Male">Male <i class="fas fa-caret-down"></i></a>
               <ul>
               <li>Test Sub Category</li>
               <li>Test Sub Category 2</li>
               </ul>
           </li>
 
-          <li><a href="#">Female <i class="fas fa-caret-down"></i></a></li>
-          <li><a href="#">Kids <i class="fas fa-caret-down"></i></a></li>
-          <li><a href="#">Sale</a></li>
-          <li><a href="#">Coming Soon</a></li>
+          <li><a href="#" title="Female">Female <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#" title="Kids">Kids <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#" title="Sale">Sale</a></li>
+          <li><a href="#" title="Coming Soon">Coming Soon</a></li>
         </ul>
       </div>
     </div>
@@ -153,6 +153,7 @@
         <div class="product--title">{{ name }}</div>
         <div class="product--wishlist"></div>
         <!--This is just a place holder we would house the prices here if they were on the API -->
+
         <div class="product--price">£55</div>
         <div class="product--brand"><strong>Brand:</strong> {{ brand }}</div>
         <div class="product--colour"><strong>Colour:</strong> {{ colour }}</div>
@@ -164,8 +165,11 @@
         </div>
         <div class="product--description"><strong>Description:</strong><br><div class="product--description__content"> {{ description }} </div></div>
         <div class="product--code"><strong>Product ID:</strong> {{ productid }}</div>
-        <button class="btn--buy">Add to basket</button>
-        <button class="btn--save">Save for later</button>     
+        <div class="product--buttons">
+          <button class="btn--buy" aria-label="Add to Basket">Add to basket</button>
+          <button class="btn--save" aria-label="Save for Later">Save for later</button>     
+        </div>
+        <button class="product--add-to-wishlist" aria-label="Add to Wishlist"><i class="fas fa-heart"></i></button>
       </div>
     </div
 </script>

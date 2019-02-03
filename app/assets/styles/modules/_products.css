@@ -22,6 +22,7 @@
 
 		& img {
 			display: block;
+			width: 100%
 		}
 
 
@@ -89,8 +90,28 @@
 		@mixin atMedium {
 		   	position: absolute;
     		right: 0;
-    		top: 0;
+    		top: 0.3rem;
 		}
+	}
+
+	&--add-to-wishlist {
+
+		@mixin atMedium {
+		   	position: absolute;
+    		right: 3rem;
+    		top: 0.5rem;
+    		border: 1px solid $leightonLightGrey;
+    		color: $leightonLightGrey;
+    		padding: 0.5rem;
+		}
+	}
+
+	&--buttons {
+    	margin-bottom: 1rem;
+
+    	@mixin atMedium {
+    		margin: 0;
+    	}
 	}
 
 	&--header {

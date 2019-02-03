@@ -132,7 +132,26 @@
 
 	    &__basket {
 		    text-align: center;
-		    width: 9rem;
+		    
+		    @mixin atMedium {
+				width: 3rem;
+				float: right;
+		    }
+
+		    @mixin atLarge {
+		    	width: 9rem;
+		    }
+
+		    &__text {
+		    	@mixin atMedium {
+		    		display: none;
+		    	}
+
+			    @mixin	atLarge {
+		    		display:inline;
+		    		width: 9rem;
+		    	}
+		    }
 		}
 
 		&__country {
@@ -141,7 +160,7 @@
 		}
 
 	    &__container {
-		    width: 15%;
+		    width: 200px;
 	    }
 	}
 
