@@ -485,6 +485,13 @@ a {
 		list-style-type: none;	
 		padding: 1rem 0;
 		margin: 0;
+		color: #fff;	
+	}
+
+.mobile-nav__country {
+	    width: 100%;
+	    text-align: center;
+	    padding: 1rem 0;
 	}
 
 .mobile-nav .open:after {
@@ -499,7 +506,7 @@ a {
 		margin: 0 1rem;
 	}
 
-.mobile-nav__button1, .mobile-nav__button2 {
+.mobile-nav__button {
 	    display: -webkit-box;
 	    display: -ms-flexbox;
 	    display: flex;
@@ -557,7 +564,7 @@ a {
 		text-align: center;
 		font-weight: 100;
 		font-size: 0.875rem;
-		padding: 1rem 0;
+		padding: 0.8rem 0;
 	}
 
 .header-desktop--upper ul {
@@ -568,6 +575,10 @@ a {
 			list-style-type: none;
 			display: inline-block;
 			padding: 0.5rem;
+		}
+
+.header-desktop--upper a:first-child {
+			margin-left:-2.5rem;
 		}
 
 .header-desktop--upper a:first-child:before {
@@ -598,27 +609,58 @@ a {
 	    -webkit-box-pack: justify;
 	        -ms-flex-pack: justify;
 	            justify-content: space-between;
-	    max-width: 1440px;
+	    max-width: 1200px;
 	    margin: 2rem auto 2rem auto;
 	}
 
 .header-desktop--mid__basket, .header-desktop--mid__country {
-	    	width: 20%;
-	    	padding: 2rem;
+	    	margin: 1.5rem;
 	    	color: #545454;
 	    	font-weight: 100;
+	    	border: 1px solid #b8b8b8;
+    		padding: 0.75rem;
 	    }
 
 .header-desktop--mid__basket {
-	    	text-align:right;	
+		    text-align: center;
+		    width: 9rem;
+		}
+
+.header-desktop--mid__country {
+    		width: 3rem;
+    		text-align: center;
+		}
+
+.header-desktop--mid__container {
+		    width: 15%;
 	    }
 
 .header-desktop--lower {
+		border-top: 1px solid #b8b8b8;
+		border-bottom: 1px solid #b8b8b8;
+		width: 100%;
+		text-align: center;
+		padding: 0.875rem 0;
+
 
 	}
 
+.header-desktop--lower li {
+			list-style-type: none;
+		}
+
+.header-desktop--lower a {
+			display: inline-block;
+			padding:0 1rem;
+			color: #b8b8b8;
+		}
+
+.header-desktop--lower a:hover {
+			color: #c22b20;
+		}
+
 .product-container {
-	max-width: 1440px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
@@ -633,13 +675,13 @@ a {
 	        flex-direction: row;
 	-ms-flex-wrap: wrap;
 	    flex-wrap: wrap;
-	border: 1px solid #f0f0f0;
+	border: 1px solid #b8b8b8;
 }
 
 @media (min-width:334px) {
 
 .product {
-			margin: 1rem
+			margin: 1rem 0
 }
 	}
 

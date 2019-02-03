@@ -18,7 +18,9 @@
 
     <div class="top-bar" >
       <div class="top-bar--menu">
-        <i class="fas fa-bars"></i>
+        <a onclick="toggle_visibility('mobile-nav');" >
+          <i class="fas fa-bars"></i>
+        </a>
       </div>    
       <div class="top-bar--logo">
         <img  src="../app/assets/images/logo.png" alt="the leighton shop" width="100%">
@@ -28,15 +30,20 @@
       </div>
     </div>
 
-    <div class="mobile-nav" style="display: none;">
+    <div id="mobile-nav" class="mobile-nav" style="display: none;">
 
-      <a href="#block1" class="mobile-nav__button1 closed">
+      <div class="mobile-nav__country">
+        <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
+        <i class="fas fa-caret-down"></i>
+      </div>
+
+      <a onclick="toggle_visibility('mobile-nav__block1');" class="mobile-nav__button closed" >
         <div class="nav-button">
           About Leighton
         </div>
       </a>
 
-      <div class="mobile-nav__block1" style="display: none;">  
+      <div id="mobile-nav__block1" style="display: none;">  
         <ul>
           <a href="https://www.leighton.com/work/"><li>Work</li></a>
           <li><a href="https://www.leighton.com/services/">Services</a></li>
@@ -48,15 +55,25 @@
         </ul>
       </div>
 
-      <a href="#block2" class="mobile-nav__button2 closed">
+      <a onclick="toggle_visibility('mobile-nav__block2');" class="mobile-nav__button closed" >
         <div class="nav-button">
           Leighton Shop
         </div>
       </a>
 
-      <div class="mobile-nav__block2" style="display: none;">  
+      <div id="mobile-nav__block2" style="display: none;">  
         <ul>
-          <li><a href="https://www.leighton.com/work/">Work</a></li>
+          <a href="#"><li>Shop Home</li></a>
+          <a onclick="toggle_visibility('mobile-nav__sub-block1');" class="mobile-nav__button closed"><li>Male</li></a>
+          <div id="mobile-nav__sub-block1" style="display: none;">
+            <ul>
+              <li>Test Sub Category</li>
+            <ul>
+          </div>
+          <a href="#"><li>Female</li></a>
+          <a href="#"><li>Kids</li></a>
+          <a href="#"><li>Sale</li></a>
+          <a href="#"><li>Coming Soon</li></a>
         </ul>
       </div>
       
@@ -79,25 +96,40 @@
     </div>
 
     <div class="header-desktop--mid">
-
-      <div class="header-desktop--mid__country">
-        <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
-        <i class="fas fa-caret-down"></i>
+      <div class="header-desktop--mid__container">
+        <div class="header-desktop--mid__country">
+          <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
+          <i class="fas fa-caret-down"></i>
+        </div>
       </div>
 
       <div class="header-desktop--mid__logo">
         <img src="../app/assets/images/logo.png" alt="the leighton shop">
       </div>
 
-      <div class="header-desktop--mid__basket">
-        <span>
-          <i class="fas fa-shopping-cart"></i> Your Basket (<span class="red">x</span>)
-        </span>
+      <div class="header-desktop--mid__container">
+        <div class="header-desktop--mid__basket">
+          <span>
+            <i class="fas fa-shopping-cart"></i> Your Basket (<span class="red">x</span>)
+          </span>
+        </div>
       </div>
-
     </div>
   
     <div class="header-desktop--lower">
+          <ul>
+          <a href="#"><li>Shop Home</li></a>
+          <a onclick="toggle_visibility('mobile-nav__sub-block1');" class="mobile-nav__button closed"><li>Male <i class="fas fa-caret-down"></i></li></a>
+          <div id="mobile-nav__sub-block1" style="display: none;">
+            <ul>
+              <li>Test Sub Category</li>
+            <ul>
+          </div>
+          <a href="#"><li>Female</li></a>
+          <a href="#"><li>Kids</li></a>
+          <a href="#"><li>Sale</li></a>
+          <a href="#"><li>Coming Soon</li></a>
+        </ul>
     </div>
 
   </div>
@@ -179,26 +211,19 @@ fetch(apiUrl, { headers })
 
 })(); 
 
-// Script to hide/show menu
-$(document).ready(function(){
-
-  $(".top-bar--menu").click(function(){
-    $(".mobile-nav").toggle("fast");
-  });
-
-  $(".mobile-nav__button1").click(function(){
-    $(".mobile-nav__block1").toggle("fast");
-    $(".mobile-nav__button1").toggleClass("open");
-    $(".mobile-nav__button1").toggleClass("closed"); 
-  });
-
-  $(".mobile-nav__button2").click(function(){
-    $(".mobile-nav__block2").toggle("fast");
-    $(".mobile-nav__button2").toggleClass("open"); 
-    $(".mobile-nav__button2").toggleClass("closed"); 
-  });
-
+// Script to hide/show menu and toggle class on mobile navigation
+$('.mobile-nav__button').click(function() {
+    $(this).toggleClass('closed');
+    $(this).toggleClass('open');
 });
+
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
 </script>
 
 
