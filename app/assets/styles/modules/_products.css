@@ -1,6 +1,9 @@
-.product {
-	max-width: 1200px;
+.product-container {
+	max-width: 1440px;
 	margin: 0 auto;
+}
+
+.product {
 	margin-bottom: 1rem;
 	display: flex;
 	flex-direction: row;
@@ -10,10 +13,6 @@
 		@mixin atSmall {
 			margin: 1rem;
 		}
-
-	.row {
-		
-	}
 
 	&--image {
 		width: 33%;

@@ -1,82 +1,129 @@
-.header-nav {	
-	background: $leightonGrey;
-	width: 100%;
-	text-align: center;
+.header-mobile {
+	@mixin atMedium {
+		display: none;
+	}
+}
+
+.mobile-nav {
+	background: $leightonRed;
+
+	a {
+		color: $leightonLightText;	
+	}
 	
-	@mixin atSmall {
-		background: #fff;
+	ul	{
+		margin: 0
 	}
 
-	ul {
+	li { 
+		list-style-type: none;	
+		padding: 1rem 0;
 		margin: 0;
 	}
 
-	li {
-		list-style-type: none;
-		padding: 0 1rem 0 0.5rem;
-		line-height: 2.5rem;
-		text-transform: lowercase;
-		font-weight: 100;	
+	.open:after {
+		content: " - ";
+		font-size: 2rem;
+		margin: 0 1rem;
+	}
 
-		@mixin atSmall{
-			display: block;
-		}	
+	.closed:after {
+		content: " + ";
+		font-size: 2rem;
+		margin: 0 1rem;
+	}
 
-		@mixin atMediumUp {
-			display: inline-block;
+	&__button1, &__button2 {
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-between;
+	}
+}
+
+.top-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+		&--menu, &--basket {
+    		font-size: 1rem;
+    		padding: 1.75rem 0.5rem;
+			color: $leightonGrey;
 		}
 
-			&:after {
-				color: $leightonLightText;
+		&--logo {
+			margin: 0 auto;
+			padding: 1rem;
+		}
+}
 
-				@mixin atMediumUp {
-					content:' . ';
-					padding-left: 1rem;
-				}
-			}
+.nav-button {
+	padding: 1rem;
+}
 
-			&:last-child:after {
-				@mixin atMediumUp {
-					content:'';
-				}
-			}
+.header-desktop {
+	display: none;
+
+	@mixin atMedium {
+		display: block;
 	}
 
-	a {
-		text-decoration:none;
-		color: $leightonLightText;
-	}
+	&--upper {
+		width: 100%;
+		background: $leightonGrey;
+		text-align: center;
+		font-weight: 100;
+		font-size: 0.875rem;
+		padding: 1rem 0;
 
-	&--menu-block {
-		@mixin atSmall {
-			display: none;
-			background: $leightonRed;
+		ul {
+			margin: 0;
+		}
+
+		li {
+			list-style-type: none;
+			display: inline-block;
+			padding: 0.5rem;
+		}
+
+		a:first-child:before {
+			content: "";
+		}
+
+		a:before {
+			content: " . ";
+			padding: 0 0.5rem;
+		}
+
+		a {
 			color: $leightonLightText;
 		}
-	}
 
-	&--mobile {
-		width: 100%;
-		position: relative;
-
-			@mixin atMediumUp {
-				display: none;
-			}
-
-			@mixin atSmall {
-	    		padding: 1rem;
-			}
-	}
-
-	&--mobile-logo {
-		@mixin atMediumUp {
-			display: none;
-		}
-
-		@mixin atSmall {
-			margin:0 auto;
+		a:hover {
+			color: $leightonRed;
 		}
 	}
 
+	&--mid {
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-between;
+	    max-width: 1440px;
+	    margin: 2rem auto 2rem auto;
 
+	    &__basket, &__country {
+	    	width: 20%;
+	    	padding: 2rem;
+	    	color: $leightonGrey;
+	    	font-weight: 100;
+	    }
+
+	    &__basket {
+	    	text-align:right;	
+	    }
+	}
+
+	&--lower {
+
+	}
 }

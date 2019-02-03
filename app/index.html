@@ -6,34 +6,107 @@
   <meta charset="utf-8"/>
   <title>Leighton Shop</title>
   <link rel="stylesheet" href="temp/styles/styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
 <body>
 
 <header>
-  <div class="header-nav">
-    <div class="header-nav--mobile">
-      <a class="header-nav--menu-icon" href="#">
-        <img src="../app/assets/images/menu.svg" alt="menu" width="10%">
+
+  <div class="header-mobile">
+
+    <div class="top-bar" >
+      <div class="top-bar--menu">
+        <i class="fas fa-bars"></i>
+      </div>    
+      <div class="top-bar--logo">
+        <img  src="../app/assets/images/logo.png" alt="the leighton shop" width="100%">
+      </div>
+      <div class="top-bar--basket">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+    </div>
+
+    <div class="mobile-nav" style="display: none;">
+
+      <a href="#block1" class="mobile-nav__button1 closed">
+        <div class="nav-button">
+          About Leighton
+        </div>
       </a>
-      <img class="header-nav--mobile-logo" src="../app/assets/images/logo.png" alt="the leighton shop" width="50%">
+
+      <div class="mobile-nav__block1" style="display: none;">  
+        <ul>
+          <a href="https://www.leighton.com/work/"><li>Work</li></a>
+          <li><a href="https://www.leighton.com/services/">Services</a></li>
+          <li><a href="https://www.leighton.com/insights/">Insights</a></li>
+          <li><a href="https://www.leighton.com/blog/">Blog</a></li>
+          <li><a href="https://www.leighton.com/events/">Events</a></li>
+          <li><a href="#"><strong>Shop</strong></a></li>
+          <li><a href="https://www.leighton.com/get-in-touch/">Contact</a></li>
+        </ul>
+      </div>
+
+      <a href="#block2" class="mobile-nav__button2 closed">
+        <div class="nav-button">
+          Leighton Shop
+        </div>
+      </a>
+
+      <div class="mobile-nav__block2" style="display: none;">  
+        <ul>
+          <li><a href="https://www.leighton.com/work/">Work</a></li>
+        </ul>
+      </div>
+      
     </div>
-    <div class="header-nav--menu-block">
+
+  </div>
+
+  <div class="header-desktop">
+    <div class="header-desktop--upper">
       <ul>
-        <li><a href="https://www.leighton.com/work/">Work</a></li>
-        <li><a href="https://www.leighton.com/services/">Services</a></li>
-        <li><a href="https://www.leighton.com/insights/">Insights</a></li>
-        <li><a href="https://www.leighton.com/blog/">Blog</a></li>
-        <li><a href="https://www.leighton.com/events/">Events</a></li>
-        <li><a href="#"><strong>Shop</strong></a></li>
-        <li><a href="https://www.leighton.com/get-in-touch/">Contact</a></li>
+        <a href="https://www.leighton.com/work/"><li>Work</li></a>
+        <a href="https://www.leighton.com/services/"><li>Services</li></a>
+        <a href="https://www.leighton.com/insights/"><li>Insights</li></a>
+        <a href="https://www.leighton.com/blog/"><li>Blog</li></a>
+        <a href="https://www.leighton.com/events/"><li>Events</li></a>
+        <a href="#"><li><strong>Shop</strong></li></a>
+        <a href="https://www.leighton.com/get-in-touch/"><li>Contact</li></a>
       </ul>
+
     </div>
+
+    <div class="header-desktop--mid">
+
+      <div class="header-desktop--mid__country">
+        <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
+        <i class="fas fa-caret-down"></i>
+      </div>
+
+      <div class="header-desktop--mid__logo">
+        <img src="../app/assets/images/logo.png" alt="the leighton shop">
+      </div>
+
+      <div class="header-desktop--mid__basket">
+        <span>
+          <i class="fas fa-shopping-cart"></i> Your Basket (<span class="red">x</span>)
+        </span>
+      </div>
+
+    </div>
+  
+    <div class="header-desktop--lower">
+    </div>
+
   </div>
 </header>
 
-<div class="featured"></div>
-<div class="products"></div>
+<div class="product-container">
+  <div class="featured"></div>
+  <div class="products"></div>
+</div>
 
 <script id="template" type="text/template">
     <div class="product">
@@ -41,6 +114,9 @@
       <div class="product--image"><img src="../app/assets/images/no-image.jpg" alt="no image"> </div>
       <div class="product--information">
         <div class="product--title">{{ name }}</div>
+        <div class="product--wishlist"></div>
+        <!--This is just a place holder we would house the prices here if they were on the API -->
+        <div class="product--price">£55</div>
         <div class="product--brand">Brand: {{ brand }}</div>
         <select>
             <option value="" disabled selected>Select Size</option>
@@ -104,16 +180,25 @@ fetch(apiUrl, { headers })
 })(); 
 
 // Script to hide/show menu
-var button = document.querySelector('.header-nav--menu-icon');
-var menu = document.querySelector('.header-nav--menu-block');
-button.addEventListener('click', function (event) {
-      if (menu.style.display == "block") {
-          menu.style.display = "none";
-      } else {
-          menu.style.display = "block";
-      }
-    }
-  );
+$(document).ready(function(){
+
+  $(".top-bar--menu").click(function(){
+    $(".mobile-nav").toggle("fast");
+  });
+
+  $(".mobile-nav__button1").click(function(){
+    $(".mobile-nav__block1").toggle("fast");
+    $(".mobile-nav__button1").toggleClass("open");
+    $(".mobile-nav__button1").toggleClass("closed"); 
+  });
+
+  $(".mobile-nav__button2").click(function(){
+    $(".mobile-nav__block2").toggle("fast");
+    $(".mobile-nav__button2").toggleClass("open"); 
+    $(".mobile-nav__button2").toggleClass("closed"); 
+  });
+
+});
 </script>
 
 
