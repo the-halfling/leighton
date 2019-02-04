@@ -237,16 +237,14 @@ fetch(apiUrl, { headers })
 })();
 
 function searchPage(){
-
+  //search input detection
   let searchValue = document.getElementById('searchInput').value;
 
+  //set parameters to search in
   let parent = document.getElementById('product-container');
   let container = document.getElementById('product');
   let child = parent.getElementsByTagName('span');
   
-      
-      console.log(child);
-
       for(let i = 0;i < child.length;i++){
 
         let a = child[i];
