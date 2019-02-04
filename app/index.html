@@ -33,9 +33,12 @@
 
     <div id="mobile-nav" class="mobile-nav" style="display: none;">
 
-      <div class="mobile-nav__country">
-        <img src="../app/assets/images/uk_flag.png" alt="the leighton shop">
-        <i class="fas fa-caret-down"></i>
+      <div class="mobile-filters">
+        <div class="mobile-filters__country">
+          <img src="../app/assets/images/uk_flag.png" alt="Country Selection - UK">
+          <i class="fas fa-caret-down"></i>
+        </div>
+        <button class="mobile-filters__wishlist" aria-label="View Wishlist"><i class="fas fa-heart"></i></button>
       </div>
 
       <a onclick="toggle_visibility('mobile-nav__block1');" class="mobile-nav__button closed" title="About Leighton" >
@@ -99,7 +102,7 @@
     <div class="header-desktop--mid">
       <div class="header-desktop--mid__container">
         <div class="header-desktop--mid__country">
-          <img src="../app/assets/images/uk_flag.png" alt="UK Flag">
+          <img src="../app/assets/images/uk_flag.png" alt="Country Selection - UK">
           <i class="fas fa-caret-down"></i>
         </div>
       </div>
@@ -142,35 +145,48 @@
 </header>
 
 <div class="filters">
-  <form id="filters--search-form">
-    <input type="text" name="search" id="searchInput" placeholder="Enter Search...">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" name="search" id="searchInput">
+  </div>
+
+  <div class="page-filters">
+    <button class="page-filters__wishlist" aria-label="View Wishlist"><i class="fas fa-heart"></i></button>
+    <div class="page-filters__sort">Sort By <i class="fas fa-caret-down"></i></div>
+    <div class="page-filters__display">Display <i class="fas fa-caret-down"></i></div>
+  </div>
+
     
   </form>
 </div>
 
-<div id="product-container">
-  <div class="featured"></div>
-  <div class="products"></div>
-</div>
+  <div class="featured product-container"></div>
+  <div class="products product-container"></div>
+
+<footer>
+  <div class="footer">
+    <div class="footer--copyright">&copy; 2019 the leighton shop</div>
+  </div>
+</footer>
 
 <script id="template" type="text/template">
-    <div class="product" id="product">
+    <div class="product">
       <div class="product--header">{{ type }}</div>
       <div class="product--image"><img src="../app/assets/images/no-image.png" alt="no image"> </div>
-      <div class="product--information" id="product--information">
-        <div class="product--title"><span>{{ name }}</span></div>
+      <div class="product--information">
+        <div class="product--title searchable">{{ name }}</div>
         <!--This is just a place holder we would house the prices here if they were on the API -->
         <div class="product--price">£55</div>
-        <div class="product--brand"><strong>Brand:</strong><span> {{ brand }}</span></div>
-        <div class="product--colour"><strong>Colour:</strong><span> {{ colour }}</span></div>
+        <div class="product--brand searchable"><strong>Brand:</strong> {{ brand }}</div>
+        <div class="product--colour searchable"><strong>Colour:</strong> {{ colour }}</div>
         <div class="product--sizes">
           <select>
               <option value="" disabled selected>Select Size </option>
               {{ options }}
           </select>
         </div>
-        <div class="product--description"><strong>Description:</strong><br><div class="product--description__content"><span> {{ description }} </span></div></div>
-        <div class="product--code"><strong>Product ID:</strong><span> {{ productid }}</span></div>
+        <div class="product--description"><strong>Description:</strong><br><div class="product--description__content searchable">{{ description }}</div></div>
+        <div class="product--code searchable"><strong>Product ID:</strong> {{ productid }}</div>
         <div class="product--buttons">
           <button class="btn--buy" aria-label="Add to Basket">Add to basket</button>
           <button class="btn--save" aria-label="Save for Later">Save for later</button>     
@@ -181,22 +197,25 @@
 </script>
 
 <script>(() => { 
-//set API details
+//set API details here
 const apiUrl = 'https://27gmrimn45.execute-api.eu-west-2.amazonaws.com/demos/leighton-demo-api?TableName=products';
 const headers = new Headers({
   'x-api-key': 'zQo4PPqD862IwDIQRZub8gX4dqjA3aW2DDhI6UF4',
 });
 
+//set the templates to for the products and featured products
 const featured = document.querySelector('.featured');
 const products = document.querySelector('.products');
 const template = document.getElementById('template').innerHTML;
+
+//set featured product ID here
 const featuredID = '0m8hjmd721';
 
 
 const addItem = (item) => {
 
   let hasStock = false;
-
+  //populate the array for sizes 
   let options = [];
   ['small', 'medium', 'large'].forEach((size) => {
     if (item.size[size] > 0) {
@@ -204,11 +223,12 @@ const addItem = (item) => {
          options.push(`<option value="${size}">${size} - ${item.size[size]} In Stock</option>`);
     }
   });
-
+  //skip over products that have no stock
   if (hasStock == false) {
     return;
   };
 
+  //check to see if the product is featured
   const isFeatured = item.productid === featuredID;
   
   //replace the placeholders tempalte
@@ -224,45 +244,24 @@ const addItem = (item) => {
     return featured.innerHTML += html;
   }
 
+  //remove type if not featured
   html = html.replace('{{ type }}', '');
   return products.innerHTML += html;
 
 };
 
+//pull the products from the API
 fetch(apiUrl, { headers }) 
 .then(r => r.json()) 
 .then(data => data.Items.forEach(addItem)) 
+//log any errors connecting to the API
 .catch(error => console.log(error)) 
 
 })();
 
-function searchPage(){
-  //search input detection
-  let searchValue = document.getElementById('searchInput').value;
-
-  //set parameters to search in
-  let parent = document.getElementById('product-container');
-  let container = document.getElementById('product');
-  let child = parent.getElementsByTagName('span');
-  
-      for(let i = 0;i < child.length;i++){
-
-        let a = child[i];
-
-        if(a.innerHTML.indexOf(searchValue) > -1) {
-
-          container.style.display = '';
-
-        } else {
-
-          container.style.display = 'none';
-
-        };
-
-      };
-};
-
-// Script to hide/show menu and toggle class on mobile navigation
+// hide/show menu and toggle class on mobile navigation 
+//used JQuery to make it easier to deal with multiple menu items 
+//to save bloating the code
 $('.mobile-nav__button').click(function() {
     $(this).toggleClass('closed');
     $(this).toggleClass('open');
@@ -277,19 +276,41 @@ $('.mobile-nav__button').click(function() {
     }
 
 // get search element
-let searchInput = document.getElementById ('searchInput'); 
+let searchInput = document.getElementById('searchInput'); 
 // add event listener
-searchInput.addEventListener ('keyup', searchPage);
+searchInput.addEventListener('keyup', searchPage);
 
+function searchPage(){
+  //set the search value based on the input
+  let searchValue = document.getElementById('searchInput').value;
+
+  //set parameters to search from
+  let parent = document.getElementsByClassName('product');
+  let child = document.getElementsByClassName('searchable');
+
+  //loop through the parent containers
+  for (let i = 0; i < parent.length; i++){
+
+    //loop through all child data
+    for(let j = 0; j < child.length; j++){
+      
+      let a = child[j];
+      
+      if(a.innerText.indexOf(searchValue) > -1) {
+    
+        parent[i].style.display = '';
+        break;
+
+      } else {
+
+        parent[i].style.display = 'none';
+
+      };
+    };
+  };
+};
 
 </script>
-
-
-<footer>
-  <div class="footer">
-    <div class="footer--copyright">&copy; 2019 the leighton shop</div>
-  </div>
-</footer>
 
 </body>
 </html>

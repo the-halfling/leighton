@@ -458,6 +458,17 @@ a {
 	text-decoration:none;
 }
 
+input{
+	border: 0;
+	outline: 0;
+}
+
+button {
+	background: none;
+	border: 0;
+	outline: 0;
+}
+
 .red {
 	color: #c22b20;
 }
@@ -732,7 +743,126 @@ a {
 	margin: 0 auto;
 }
 
-#product-container {
+.search-box {
+	padding: 0;
+	width: 95%;
+	margin: 1rem auto; 
+	display: block;
+	border: 1px solid #b8b8b8;
+	border-left: 0; 
+	color: #545454;
+}
+
+@media (min-width:768px){
+
+.search-box {
+		max-width: 400px;
+		display: inline-block;
+		margin: 1.5rem 0 0 0
+} 
+	}
+
+.search-box i {
+    border: 1px solid #b8b8b8;
+    border-top: 0;
+    border-bottom: 0;
+    padding: 1rem;
+	}
+
+.page-filters {
+	width: 100%;
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+}
+
+@media (min-width:768px){
+
+.page-filters {
+		float: right;
+		width: 400px;
+		text-align: right
+} 
+	}
+
+.page-filters__wishlist {
+		display: none;
+		border: 0;
+	}
+
+@media (min-width:768px){
+
+.page-filters__wishlist {
+			display: unset;
+		    padding: 0.92rem;
+		    margin-top: 1.5rem;
+		    background: none;
+		    border: 1px solid #b8b8b8;
+		    color: #545454
+	} 
+	}
+
+.page-filters__sort, .page-filters__display {
+
+		width: 30%;
+		margin: 1.5rem 0;
+		border: 1px solid #b8b8b8;
+		padding: 0.92rem;
+
+
+	}
+
+@media (min-width:768px){
+
+.page-filters__sort, .page-filters__display {
+			display: unset;
+			text-align: left;
+			margin: 1.5rem 0 0 1rem;
+			width: 110px;
+	    	float: right;
+		    color: #545454
+
+
+	} 
+	}
+
+.page-filters__sort i, .page-filters__display i {
+			float: right;
+		}
+
+.mobile-filters {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	color: #fff;
+
+}
+
+.mobile-filters__country, .mobile-filters__wishlist {
+
+		text-align:center;
+		display: inline-block;
+		margin: 1rem 0;
+		width: 45%;
+		padding: 1rem;
+	}
+
+.mobile-filters__wishlist button {
+
+		}
+
+.product-container {
 	max-width: 1200px;
 	margin: 0 auto;
 }

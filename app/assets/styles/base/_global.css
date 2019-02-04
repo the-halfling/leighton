@@ -6,6 +6,17 @@ a {
 	text-decoration:none;
 }
 
+input{
+	border: 0;
+	outline: 0;
+}
+
+button {
+	background: none;
+	border: 0;
+	outline: 0;
+}
+
 .red {
 	color: $leightonRed;
 }
