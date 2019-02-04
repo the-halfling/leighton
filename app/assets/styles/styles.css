@@ -3,6 +3,7 @@
 @import "base/_global";
 @import "base/_mixins";
 @import "modules/_header";
+@import "modules/_filters";
 @import "modules/_products";
 @import "modules/_btn";
 @import "modules/_footer";

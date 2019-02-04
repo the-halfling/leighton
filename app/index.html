@@ -7,6 +7,7 @@
   <title>Leighton Shop</title>
   <link rel="stylesheet" href="temp/styles/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -140,38 +141,43 @@
   </div>
 </header>
 
-<div class="product-container">
+<div class="filters">
+  <form id="filters--search-form">
+    <input type="text" name="search" id="searchInput" placeholder="Enter Search...">
+    
+  </form>
+</div>
+
+<div id="product-container">
   <div class="featured"></div>
   <div class="products"></div>
 </div>
 
 <script id="template" type="text/template">
-    <div class="product">
-      <div class="product--header">{{ type }} Product</div>
+    <div class="product" id="product">
+      <div class="product--header">{{ type }}</div>
       <div class="product--image"><img src="../app/assets/images/no-image.png" alt="no image"> </div>
-      <div class="product--information">
-        <div class="product--title">{{ name }}</div>
-        <div class="product--wishlist"></div>
+      <div class="product--information" id="product--information">
+        <div class="product--title"><span>{{ name }}</span></div>
         <!--This is just a place holder we would house the prices here if they were on the API -->
-
         <div class="product--price">£55</div>
-        <div class="product--brand"><strong>Brand:</strong> {{ brand }}</div>
-        <div class="product--colour"><strong>Colour:</strong> {{ colour }}</div>
+        <div class="product--brand"><strong>Brand:</strong><span> {{ brand }}</span></div>
+        <div class="product--colour"><strong>Colour:</strong><span> {{ colour }}</span></div>
         <div class="product--sizes">
           <select>
               <option value="" disabled selected>Select Size </option>
               {{ options }}
           </select>
         </div>
-        <div class="product--description"><strong>Description:</strong><br><div class="product--description__content"> {{ description }} </div></div>
-        <div class="product--code"><strong>Product ID:</strong> {{ productid }}</div>
+        <div class="product--description"><strong>Description:</strong><br><div class="product--description__content"><span> {{ description }} </span></div></div>
+        <div class="product--code"><strong>Product ID:</strong><span> {{ productid }}</span></div>
         <div class="product--buttons">
           <button class="btn--buy" aria-label="Add to Basket">Add to basket</button>
           <button class="btn--save" aria-label="Save for Later">Save for later</button>     
         </div>
         <button class="product--add-to-wishlist" aria-label="Add to Wishlist"><i class="fas fa-heart"></i></button>
       </div>
-    </div
+    </div>
 </script>
 
 <script>(() => { 
@@ -206,13 +212,11 @@ const addItem = (item) => {
   const isFeatured = item.productid === featuredID;
   
   //replace the placeholders tempalte
-  let html = template.replace('{{ name }}', item.name);
-  html = html.replace('{{ colour }}', item.colour);
-  html = html.replace('{{ brand }}', item.brand);
-  html = html.replace('{{ description }}', item.description);
-  html = html.replace('{{ productid }}', item.productid);
-
-
+  let html = template.replace(/{{ name }}/g, item.name);
+      html = html.replace(/{{ colour }}/g, item.colour);
+      html = html.replace(/{{ brand }}/g, item.brand);
+      html = html.replace(/{{ description }}/g, item.description);
+      html = html.replace(/{{ productid }}/g, item.productid);
 
   html = html.replace('{{ options }}', options.join(''));
   if (isFeatured) {
@@ -230,7 +234,35 @@ fetch(apiUrl, { headers })
 .then(data => data.Items.forEach(addItem)) 
 .catch(error => console.log(error)) 
 
-})(); 
+})();
+
+function searchPage(){
+
+  let searchValue = document.getElementById('searchInput').value;
+
+  let parent = document.getElementById('product-container');
+  let container = document.getElementById('product');
+  let child = parent.getElementsByTagName('span');
+  
+      
+      console.log(child);
+
+      for(let i = 0;i < child.length;i++){
+
+        let a = child[i];
+
+        if(a.innerHTML.indexOf(searchValue) > -1) {
+
+          container.style.display = '';
+
+        } else {
+
+          container.style.display = 'none';
+
+        };
+
+      };
+};
 
 // Script to hide/show menu and toggle class on mobile navigation
 $('.mobile-nav__button').click(function() {
@@ -245,6 +277,13 @@ $('.mobile-nav__button').click(function() {
        else
           e.style.display = 'block';
     }
+
+// get search element
+let searchInput = document.getElementById ('searchInput'); 
+// add event listener
+searchInput.addEventListener ('keyup', searchPage);
+
+
 </script>
 
 

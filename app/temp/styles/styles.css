@@ -727,7 +727,12 @@ a {
 			color: #c22b20;
 		}
 
-.product-container {
+.filters{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+#product-container {
 	max-width: 1200px;
 	margin: 0 auto;
 }
