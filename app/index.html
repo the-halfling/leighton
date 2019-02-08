@@ -155,9 +155,6 @@
     <div class="page-filters__sort">Sort By <i class="fas fa-caret-down"></i></div>
     <div class="page-filters__display">Display <i class="fas fa-caret-down"></i></div>
   </div>
-
-    
-  </form>
 </div>
 
   <div class="featured product-container"></div>
@@ -244,7 +241,6 @@ const addItem = (item) => {
     return featured.innerHTML += html;
   }
 
-  //remove type if not featured
   html = html.replace('{{ type }}', '');
   return products.innerHTML += html;
 
@@ -253,6 +249,7 @@ const addItem = (item) => {
 //pull the products from the API
 fetch(apiUrl, { headers }) 
 .then(r => r.json()) 
+// add data to the template
 .then(data => data.Items.forEach(addItem)) 
 //log any errors connecting to the API
 .catch(error => console.log(error)) 
